@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
 	template: `
 		<h1>Atelier i18n</h1>
 		<h2>bienvenue dans la sandbox</h2>
-		<p>cette SPA a 2 routes avec un module lazy loade</p>
+		<p>cette SPA a 2 routes avec un module lazy loade {{'COMMON_0' | translate}}</p>
 		<nav>
 			<ul>
 				<li><a routerLink="/foo">Foo</a></li>
