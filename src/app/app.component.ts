@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject, LOCALE_ID } from '@angular/core';
+import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
 	selector: 'app-root',
@@ -19,4 +20,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 	title = 'sandbox';
+	constructor(
+		@Inject(LOCALE_ID) localeId: string,
+		translocoService: TranslocoService
+	) {
+		translocoService.setActiveLang(localeId.split('-')[0]);
+	}
 }

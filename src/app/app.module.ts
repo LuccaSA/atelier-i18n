@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -21,7 +21,9 @@ const routes: Routes = [
 		HttpClientModule,
 		TranslocoRootModule,
 	],
-	providers: [],
+	providers: [
+		{ provide: LOCALE_ID, useValue: 'fr-FR' }
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }
