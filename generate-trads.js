@@ -65,9 +65,9 @@ const mergedKeys = locales.reduce((acc, locale) => ({
 
 // 1 file = 1 locale and 1 module
 for (const locale of locales) {
-  generateJSONFile(`i18n.common.${locale}.json`, keys.common[locale]);
-  generateJSONFile(`i18n.foo.${locale}.json`, keys.foo[locale]);
-  generateJSONFile(`i18n.bar.${locale}.json`, keys.bar[locale]);
+  generateJSONFile(`common/${locale}.json`, keys.common[locale]);
+  generateJSONFile(`foo/${locale}.json`, keys.foo[locale]);
+  generateJSONFile(`bar/${locale}.json`, keys.bar[locale]);
   generateTSFile(path.join(app, 'i18n', 'common', `translations.${locale}.ts`), keys.common[locale]);
   generateTSFile(path.join(app, 'pages', 'foo', 'i18n', `translations.${locale}.ts`), keys.foo[locale]);
   generateTSFile(path.join(app, 'pages', 'bar', 'i18n', `translations.${locale}.ts`), keys.bar[locale]);

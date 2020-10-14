@@ -1,8 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
+import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { AppComponent } from './app.component';
+import { TranslocoRootModule } from './transloco/transloco-root.module';
+
 
 const routes: Routes = [
 	{ path: 'bar', loadChildren: () => import('./pages/bar').then(m => m.BarModule) },
@@ -11,11 +13,13 @@ const routes: Routes = [
 
 @NgModule({
 	declarations: [
-		AppComponent
+		AppComponent,
 	],
 	imports: [
 		BrowserModule,
 		RouterModule.forRoot(routes),
+		HttpClientModule,
+		TranslocoRootModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent]

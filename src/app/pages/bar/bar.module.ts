@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
-import { BarComponent } from './bar.component';
 import { RouterModule, Routes } from '@angular/router';
+import { TranslocoModule, TRANSLOCO_SCOPE } from '@ngneat/transloco';
+import { BarComponent } from './bar.component';
 
 const routes: Routes = [
 	{ path: '', component: BarComponent },
@@ -12,6 +13,10 @@ const routes: Routes = [
 	],
 	imports: [
 		RouterModule.forChild(routes),
+		TranslocoModule,
 	],
+	providers: [
+		{ provide: TRANSLOCO_SCOPE, useValue: 'bar' }
+	]
 })
 export class BarModule { }
