@@ -1,11 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, Inject, LOCALE_ID } from '@angular/core';
+import { IPrincipal, PRINCIPAL } from '@lucca/principal';
 
 @Component({
 	selector: 'app-root',
 	template: `
 		<h1>Atelier i18n</h1>
 		<h2>bienvenue dans la sandbox</h2>
-		<p>cette SPA a 2 routes avec un module lazy loade</p>
+		<p>utilisateur connecté :
+			<code>{{principal | json}}</code>
+		</p>
+		<p>locale : <code>{{locale}}</code></p>
+		<p>cette SPA a 2 routes lazy loadées</p>
 		<nav>
 			<ul>
 				<li><a routerLink="/foo">Foo</a></li>
@@ -17,5 +22,8 @@ import { Component } from '@angular/core';
 	styles: []
 })
 export class AppComponent {
-	title = 'sandbox';
+	constructor(
+		@Inject(PRINCIPAL) public principal: IPrincipal,
+		@Inject(LOCALE_ID) public locale: string,
+	) {}
 }
