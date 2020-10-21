@@ -1,0 +1,6 @@
+﻿{
+ "A_COMMON_KEY": "Este texto también aparece en la otra pestaña.",
+ "APPLICATION_NAME": "Taller i18n",
+ "DESCRIPTION": "Este SPA tiene 2 rutas con un módulo de carga diferida",
+ "TITLE": "Bienvenido a la caja de arena"
+}

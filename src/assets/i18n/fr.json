@@ -1,0 +1,6 @@
+﻿{
+ "A_COMMON_KEY": "Ce texte apparait aussi dans l'autre onglet.",
+ "APPLICATION_NAME": "Atelier i18n",
+ "DESCRIPTION": "Cette SPA a 2 routes avec un module lazy loadé",
+ "TITLE": "Bienvenue dans la sandbox"
+}

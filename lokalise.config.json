@@ -1,0 +1,10 @@
+{
+  "config": [
+    {
+      "generator": "json",
+      "project_id": "288598895f8f3702b59763.99812935",
+      "local_directory": "src/assets/i18n/",
+      "remote_directory": "front/"
+    }
+  ]
+}

@@ -4,10 +4,19 @@ import { TranslocoService } from '@ngneat/transloco';
 @Component({
 	selector: 'app-root',
 	template: `
-		<h1>Atelier i18n</h1>
-		<h2>bienvenue dans la sandbox</h2>
-		<p>cette SPA a 2 routes avec un module lazy loade</p>
-		<div transloco="COMMON_5"></div>
+		<div style="display: flex">
+			<span style="flex: 1; text-decoration: underline; cursor: pointer; text-align: center;" title="de" (click)="setLang('de')">de</span>
+			<span style="flex: 1; text-decoration: underline; cursor: pointer; text-align: center;" title="en" (click)="setLang('en')">en</span>
+			<span style="flex: 1; text-decoration: underline; cursor: pointer; text-align: center;" title="es" (click)="setLang('es')">es</span>
+			<span style="flex: 1; text-decoration: underline; cursor: pointer; text-align: center;" title="fr" (click)="setLang('fr')">fr</span>
+			<span style="flex: 1; text-decoration: underline; cursor: pointer; text-align: center;" title="it" (click)="setLang('it')">it</span>
+			<span style="flex: 1; text-decoration: underline; cursor: pointer; text-align: center;" title="nl" (click)="setLang('nl')">nl</span>
+			<span style="flex: 1; text-decoration: underline; cursor: pointer; text-align: center;" title="nl-BE" (click)="setLang('nl-BE')">nl-BE</span>
+			<span style="flex: 1; text-decoration: underline; cursor: pointer; text-align: center;" title="pt" (click)="setLang('pt')">pt</span>
+		</div>
+		<h1 transloco="APPLICATION_NAME"></h1>
+		<div transloco="TITLE"></div>
+		<p transloco="DESCRIPTION"></p>
 		<nav>
 			<ul>
 				<li><a routerLink="/foo">Foo</a></li>
@@ -25,5 +34,10 @@ export class AppComponent {
 		translocoService: TranslocoService
 	) {
 		translocoService.setActiveLang(localeId.split('-')[0]);
+	}
+	
+	setLang(lang: string) {
+		location.assign(location.pathname + '#' + lang);
+		location.reload();
 	}
 }

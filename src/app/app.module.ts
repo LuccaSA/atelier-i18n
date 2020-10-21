@@ -22,7 +22,7 @@ const routes: Routes = [
 		TranslocoRootModule,
 	],
 	providers: [
-		{ provide: LOCALE_ID, useValue: 'fr-FR' }
+		{ provide: LOCALE_ID, useFactory: () => location.hash.slice(1) || 'fr-FR' },
 	],
 	bootstrap: [AppComponent]
 })

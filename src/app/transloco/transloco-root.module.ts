@@ -8,15 +8,13 @@ import {
   TRANSLOCO_CONFIG,
   TRANSLOCO_LOADER
 } from '@ngneat/transloco';
-import { TranslocoLoaderData } from '@ngneat/transloco/lib/transloco.loader';
 import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class TranslocoHttpLoader implements TranslocoLoader {
   constructor(private http: HttpClient) {}
 
-  getTranslation(lang: string, { scope }: TranslocoLoaderData) {
-    lang = scope ? lang : `common/${lang}`;
+  getTranslation(lang: string) {
     return this.http.get<Translation>(`/assets/i18n/${lang}.json`);
   }
 }
@@ -27,7 +25,7 @@ export class TranslocoHttpLoader implements TranslocoLoader {
     {
       provide: TRANSLOCO_CONFIG,
       useValue: translocoConfig({
-        availableLangs: ['de', 'en', 'es', 'fr', 'it', 'nl', 'pt'],
+        availableLangs: ['de', 'en', 'es', 'fr', 'it', 'nl', 'nl-BE', 'pt'],
         defaultLang: 'en',
         reRenderOnLangChange: false,
         prodMode: environment.production,

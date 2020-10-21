@@ -1,0 +1,6 @@
+﻿{
+ "A_COMMON_KEY": "Questo testo appare anche nell'altra scheda.",
+ "APPLICATION_NAME": "I18n workshop",
+ "DESCRIPTION": "Questa SPA ha 2 percorsi con un modulo caricato lazy",
+ "TITLE": "Benvenuto nella sandbox"
+}

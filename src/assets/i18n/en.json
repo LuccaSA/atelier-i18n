@@ -1,0 +1,6 @@
+﻿{
+ "A_COMMON_KEY": "This text also appears in the other tab.",
+ "APPLICATION_NAME": "I18n workshop",
+ "DESCRIPTION": "This SPA has 2 routes with a lazy loaded module",
+ "TITLE": "Welcome to the sandbox"
+}
