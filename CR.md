@@ -51,5 +51,20 @@ Cible atteinte
 
   > Il est possible d'avoir plusieurs clés avec le même nom tant que ces clés sont dans des fichiers différents.
 
+* Ajouter un fichier `lokalise.config.json` dans votre projet avec le contenu suivant :
+
+  ```json
+  {
+    "config": [
+      {
+        "generator": "json",
+        "project_id": "0000000000000000000000.00000000",
+        "local_directory": "src/assets/i18n/",
+        "remote_directory": "front/"
+      }
+    ]
+  }
+  ```
+
 * Dans le module Foo, importer `TranslocoModule` et ajouter un provider `{ provide: TRANSLOCO_SCOPE, useValue: 'foo' }`
 * Dans le module Bar, importer `TranslocoModule` et ajouter un provider `{ provide: TRANSLOCO_SCOPE, useValue: 'bar' }`

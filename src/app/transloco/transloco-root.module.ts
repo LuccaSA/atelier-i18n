@@ -1,14 +1,16 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, NgModule } from '@angular/core';
+import { APP_INITIALIZER, Injectable, LOCALE_ID, NgModule } from '@angular/core';
 import {
   Translation,
   translocoConfig,
   TranslocoLoader,
   TranslocoModule,
+  TranslocoService,
   TRANSLOCO_CONFIG,
   TRANSLOCO_LOADER
 } from '@ngneat/transloco';
 import { environment } from '../../environments/environment';
+import { preloadInitializer } from './preloader.initializer';
 
 @Injectable({ providedIn: 'root' })
 export class TranslocoHttpLoader implements TranslocoLoader {
@@ -31,7 +33,8 @@ export class TranslocoHttpLoader implements TranslocoLoader {
         prodMode: environment.production,
       })
     },
-    { provide: TRANSLOCO_LOADER, useClass: TranslocoHttpLoader }
+    { provide: TRANSLOCO_LOADER, useClass: TranslocoHttpLoader },
+    { provide: APP_INITIALIZER, multi: true, useFactory: preloadInitializer, deps: [LOCALE_ID, TranslocoService] },
   ]
 })
 export class TranslocoRootModule {}
