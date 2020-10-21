@@ -3,6 +3,7 @@ import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { NgxTranslateRootModule } from './ngx-translate/ngx-translate.module';
 import { TranslocoRootModule } from './transloco/transloco-root.module';
 
 
@@ -20,6 +21,7 @@ const routes: Routes = [
 		RouterModule.forRoot(routes),
 		HttpClientModule,
 		TranslocoRootModule,
+		NgxTranslateRootModule,
 	],
 	providers: [
 		{ provide: LOCALE_ID, useFactory: () => location.hash.slice(1) || 'fr-FR' },

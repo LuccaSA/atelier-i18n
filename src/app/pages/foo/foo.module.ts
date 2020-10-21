@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TranslocoModule, TRANSLOCO_SCOPE } from '@ngneat/transloco';
+import { TranslateModule } from '@ngx-translate/core';
 import { PreloadResolver } from 'src/app/transloco/preloader.resolver';
 import { FooComponent } from './foo.component';
 
@@ -16,6 +17,7 @@ const routes: Routes = [
 	imports: [
 		RouterModule.forChild(routes),
 		TranslocoModule,
+		TranslateModule
 	],
 	providers: [
 		PreloadResolver,

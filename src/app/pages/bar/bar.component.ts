@@ -6,7 +6,7 @@ import { TranslocoService } from '@ngneat/transloco';
 	template: `
 		<h2 transloco="bar.TITLE"></h2>
 		<h2>{{ fromService }}</h2>
-		<p transloco="A_COMMON_KEY"></p>
+		<p translate="A_COMMON_KEY"></p>
 	`,
 	styles: []
 })

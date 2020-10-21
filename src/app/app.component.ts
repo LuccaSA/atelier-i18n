@@ -24,9 +24,9 @@ import { Component } from '@angular/core';
 			<span title="nl-BE" (click)="setLang('nl-BE')">nl-BE</span>
 			<span title="pt" (click)="setLang('pt')">pt</span>
 		</div>
-		<h1 transloco="APPLICATION_NAME"></h1>
-		<div transloco="TITLE"></div>
-		<p transloco="DESCRIPTION"></p>
+		<h1 translate="APPLICATION_NAME"></h1>
+		<div translate="TITLE"></div>
+		<p translate="DESCRIPTION"></p>
 		<nav>
 			<ul>
 				<li><a routerLink="/foo">Foo</a></li>
