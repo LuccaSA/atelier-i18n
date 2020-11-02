@@ -1,43 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
-import { forkJoin, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { CommonLanguageLoader } from 'src/app/language-loader';
+import { LuTranslationsLoader, LuTranslationUrlsModule } from 'src/app/language-loader';
 import { FooComponent } from './foo.component';
 
 const routes: Routes = [
 	{ path: '', component: FooComponent },
 ];
-
-export class languageLoader extends CommonLanguageLoader {
-  constructor(http: HttpClient){
-		super(http);
-		console.log('languageLoader FOO');
-	}
-
-  getTranslation(lang: string): Observable<any> {
-		console.log('getTranslation FOO');
-		return forkJoin([
-			super.getTranslation(lang),
-			this.http.get(`./assets/i18n/i18n.foo.${lang}.json`)
-		]).pipe(
-			map(([common, foo]) => ({
-				...common,
-				...foo
-			})
-			)
-		);
-  }
-}
-
-export function createTranslateLoader(http: HttpClient) {
-		console.log('createTranslateLoader FOO');
-    return new languageLoader(http);
-}
-
 
 @NgModule({
 	declarations: [
@@ -47,19 +18,20 @@ export function createTranslateLoader(http: HttpClient) {
 		RouterModule.forChild(routes),
 		CommonModule,
 		HttpClientModule,
-		TranslateModule.forChild({
-				defaultLanguage: 'en',
-				loader: {
-						provide: TranslateLoader,
-						useFactory: createTranslateLoader,
-						deps: [HttpClient]
-				},
-				isolate: true,
-				// extend: true
-				// isolate: true
-		}),
-
+		LuTranslationUrlsModule.forChild(['/assets/i18n/i18n.foo.{{lang}}.json']),
+    TranslateModule.forChild({
+      defaultLanguage: 'en',
+			loader: {provide: TranslateLoader, useClass: LuTranslationsLoader},
+      isolate: true,
+    }),
 	],
+	// providers: [
+	// 	{
+	// 		provide: LU_TRANSLATION_URLS,
+	// 		useValue: ['/assets/i18n/i18n.foo.{{lang}}.json'],
+	// 		multi: true
+	// 	}
+	// ]
 })
 export class FooModule {
 	constructor(private translate: TranslateService) {
