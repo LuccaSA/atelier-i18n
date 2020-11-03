@@ -26,7 +26,7 @@ export class LuTranslationUrlsModule {
     return {
       ngModule: LuTranslationUrlsChildModule,
       providers: [
-        { provide: LU_TRANSLATION_URLS, useValue: urls },
+        { provide: LU_TRANSLATION_URLS, useValue: urls, multi: true },
       ]
     };
   }

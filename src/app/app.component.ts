@@ -1,5 +1,6 @@
 import { Component, Inject, LOCALE_ID } from '@angular/core';
 import { IPrincipal, PRINCIPAL } from '@lucca/principal';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
 	selector: 'app-root',
@@ -19,10 +20,13 @@ import { IPrincipal, PRINCIPAL } from '@lucca/principal';
 })
 export class AppComponent {
 	constructor(
+		translateService: TranslateService,
 		@Inject(PRINCIPAL) principal: IPrincipal,
 		@Inject(LOCALE_ID) locale: string,
 	) {
+    translateService.use(locale.replace(/\-.*$/, ''));
 		console.log(`app component constructor - principal: ${principal}`);
 		console.log(`app component constructor - locale: ${locale}`);
+
 	}
 }

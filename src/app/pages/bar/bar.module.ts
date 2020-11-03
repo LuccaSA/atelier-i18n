@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { LuTranslationUrlsModule } from '../../lu-translate/lu-translation-url.module';
 import { LuTranslationsLoader } from '../../lu-translate/translation-loader';
 import { BarComponent } from './bar.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
 		RouterModule.forChild(routes),
 		CommonModule,
 		HttpClientModule,
+		SharedModule,
 		LuTranslationUrlsModule.forChild(['/assets/i18n/i18n.bar.{{lang}}.json']),
     TranslateModule.forChild({
 			loader: {provide: TranslateLoader, useClass: LuTranslationsLoader},

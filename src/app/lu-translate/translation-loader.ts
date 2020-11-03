@@ -10,20 +10,15 @@ export class LuTranslationsLoader implements TranslateLoader {
   constructor(
     private http: HttpClient,
     @Optional() @Inject(LU_PARENT_TRANSLATION_URLS) private parentTranslationUrls?: string[],
-    @Optional() @Inject(LU_TRANSLATION_URLS) private translationUrls?: string[],
+    @Optional() @Inject(LU_TRANSLATION_URLS) private translationUrls?: string[][],
   ) { }
 
   public getTranslation(lang: string): Observable<object> {
     console.log('getTranslation', lang);
-    if (this.parentTranslationUrls) {
-      console.log('parent', this.parentTranslationUrls);
-    }
-    if (this.translationUrls) {
-      console.log('child', this.translationUrls);
-    }
+    const flat = <T>(arrayOfArray: T[][]): T[] => [].concat(...arrayOfArray);
     const parentAndChildArrays = [
       ...(this.parentTranslationUrls ?? []),
-      ...(this.translationUrls ?? [])
+      ...flat(this.translationUrls ?? [])
     ];
 
     const arrayTrad = parentAndChildArrays

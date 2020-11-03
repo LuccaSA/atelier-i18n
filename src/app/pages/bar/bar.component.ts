@@ -12,6 +12,7 @@ import { Component } from '@angular/core';
 		<h3>ce titre est specifique a l'onglet Bar {{myKey |
 			translate }}</h3>
 		<p>ce text apparait aussi dans l'autre onglet parent => {{'COMMON_0' | translate}}</p>
+		<p>il est aussi possible de chager des composant d'autres modules <app-shared></app-shared></p>
 	`,
 	styles: []
 })
