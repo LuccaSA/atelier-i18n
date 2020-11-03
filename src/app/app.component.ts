@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject, LOCALE_ID } from '@angular/core';
+import { IPrincipal, PRINCIPAL } from '@lucca/principal';
 
 @Component({
 	selector: 'app-root',
@@ -17,5 +18,11 @@ import { Component } from '@angular/core';
 	styles: []
 })
 export class AppComponent {
-	title = 'sandbox';
+	constructor(
+		@Inject(PRINCIPAL) principal: IPrincipal,
+		@Inject(LOCALE_ID) locale: string,
+	) {
+		console.log(`app component constructor - principal: ${principal}`);
+		console.log(`app component constructor - locale: ${locale}`);
+	}
 }
