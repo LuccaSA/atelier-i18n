@@ -34,6 +34,15 @@ const keys = {
     nl: generateTranslations('common', 'nl', 100),
     pt: generateTranslations('common', 'pt', 100),
   },
+  shared: {
+    de: generateTranslations('shared', 'de', 1000),
+    en: generateTranslations('shared', 'en', 1000),
+    es: generateTranslations('shared', 'es', 1000),
+    fr: generateTranslations('shared', 'fr', 1000),
+    it: generateTranslations('shared', 'it', 1000),
+    nl: generateTranslations('shared', 'nl', 1000),
+    pt: generateTranslations('shared', 'pt', 1000),
+  },
   foo: {
     de: generateTranslations('foo', 'de', 1000),
     en: generateTranslations('foo', 'en', 1000),
@@ -65,6 +74,7 @@ const mergedKeys = locales.reduce((acc, locale) => ({
 
 // 1 file = 1 locale and 1 module
 for (const locale of locales) {
+  generateJSONFile(`i18n.shared.${locale}.json`, keys.shared[locale]);
   generateJSONFile(`i18n.common.${locale}.json`, keys.common[locale]);
   generateJSONFile(`i18n.foo.${locale}.json`, keys.foo[locale]);
   generateJSONFile(`i18n.bar.${locale}.json`, keys.bar[locale]);
@@ -74,6 +84,7 @@ for (const locale of locales) {
 }
 
 // 1 file = 1 module
+generateJSONFile(`i18n.shared.json`, keys.shared);
 generateJSONFile(`i18n.common.json`, keys.common);
 generateJSONFile(`i18n.foo.json`, keys.foo);
 generateJSONFile(`i18n.bar.json`, keys.bar);
