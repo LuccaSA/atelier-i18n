@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { Inject, LOCALE_ID, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
-import { LuTranslationsLoader, LuTranslationUrlsModule } from 'src/app/language-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { LuTranslationUrlsModule } from '../lu-translate/lu-translation-url.module';
+import { LuTranslationsLoader } from '../lu-translate/translation-loader';
 import { BarComponent } from './bar.component';
 
 const routes: Routes = [
@@ -25,13 +26,4 @@ const routes: Routes = [
     }),
 	],
 })
-export class BarModule {
-
-  constructor(
-    private translateService: TranslateService,
-    @Inject(LOCALE_ID) locale: string
-    ) {
-    console.log('BarModule', locale);
-    translateService.use(locale.replace(/\-.*$/, ''));
-  }
-}
+export class BarModule { }

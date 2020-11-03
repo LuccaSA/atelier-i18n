@@ -1,33 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable, InjectionToken, ModuleWithProviders, NgModule, Optional } from '@angular/core';
+import { Inject, Injectable, Optional } from '@angular/core';
 import { TranslateLoader } from '@ngx-translate/core';
 import { forkJoin, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
-export const LU_TRANSLATION_URLS = new InjectionToken<string>('LU_TRANSLATIONS');
-export const LU_PARENT_TRANSLATION_URLS = new InjectionToken<string>('LU_PARENT_TRANSLATIONS');
-
-@NgModule()
-export class LuTranslationUrlsModule {
-
-  static forRoot(urls: string[]): ModuleWithProviders<LuTranslationUrlsModule> {
-    return {
-      ngModule: LuTranslationUrlsModule,
-      providers: [
-        { provide: LU_PARENT_TRANSLATION_URLS, useValue: urls },
-      ]
-    };
-  }
-
-  static forChild(urls: string[]): ModuleWithProviders<LuTranslationUrlsModule> {
-    return {
-      ngModule: LuTranslationUrlsModule,
-      providers: [
-        { provide: LU_TRANSLATION_URLS, useValue: urls },
-      ]
-    };
-  }
-}
+import { LU_PARENT_TRANSLATION_URLS, LU_TRANSLATION_URLS } from './lu-translation-url.module';
 
 @Injectable()
 export class LuTranslationsLoader implements TranslateLoader {

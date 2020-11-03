@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { Inject, LOCALE_ID, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { PrincipalModule } from '@lucca/principal';
-import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { AppComponent } from './app.component';
-import { LuTranslationsLoader, LuTranslationUrlsModule } from './language-loader';
+import { LuTranslationUrlsModule } from './pages/lu-translate/lu-translation-url.module';
+import { LuTranslationsLoader } from './pages/lu-translate/translation-loader';
 
 const routes: Routes = [
   { path: 'bar', loadChildren: () => import('./pages/bar').then(m => m.BarModule) },
@@ -85,9 +86,7 @@ const routes: Routes = [
     PrincipalModule,
     LuTranslationUrlsModule.forRoot(['/assets/i18n/i18n.common.{{lang}}.json']),
     TranslateModule.forRoot({
-        // defaultLanguage: 'en',
-        loader: { provide: TranslateLoader, useClass: LuTranslationsLoader },
-        // isolate: false,
+      loader: { provide: TranslateLoader, useClass: LuTranslationsLoader },
     }),
   ],
   providers: [
@@ -99,13 +98,4 @@ const routes: Routes = [
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-    constructor(
-    private translateService: TranslateService,
-    @Inject(LOCALE_ID) locale: string
-    ) {
-    console.log('AppModule', locale);
-    // translate.setDefaultLang('en');
-    translateService.use(locale.replace(/\-.*$/, ''));
-  }
-}
+export class AppModule { }
