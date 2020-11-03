@@ -3,8 +3,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { LuTranslationUrlsModule } from '../lu-translate/lu-translation-url.module';
-import { LuTranslationsLoader } from '../lu-translate/translation-loader';
+import { LuTranslationUrlsModule } from '../../lu-translate/lu-translation-url.module';
+import { LuTranslationsLoader } from '../../lu-translate/translation-loader';
 import { BarComponent } from './bar.component';
 
 const routes: Routes = [
