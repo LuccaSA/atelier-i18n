@@ -20,7 +20,7 @@ const routes: Routes = [
 		HttpClientModule,
 		LuTranslationUrlsModule.forChild(['/assets/i18n/i18n.bar.{{lang}}.json']),
     TranslateModule.forChild({
-      defaultLanguage: 'en',
+      // defaultLanguage: 'fr',
 			loader: {provide: TranslateLoader, useClass: LuTranslationsLoader},
       isolate: true,
     }),
