@@ -1,11 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { APP_INITIALIZER, Inject, Injectable, InjectionToken, LOCALE_ID, NgModule } from '@angular/core';
+import { Inject, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { PrincipalModule } from '@lucca/principal';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
-import { of } from 'rxjs';
 import { AppComponent } from './app.component';
 import { LuTranslationsLoader, LuTranslationUrlsModule } from './language-loader';
 
@@ -101,12 +100,12 @@ const routes: Routes = [
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  //   constructor(
-  //   private translate: TranslateService,
-  //   @Inject(LOCALE_ID) locale: string
-  //   ) {
-  //   console.log('AppModule', locale);
-  //   // translate.setDefaultLang('en');
-  //   // translate.use('en');
-  // }
+    constructor(
+    private translateService: TranslateService,
+    @Inject(LOCALE_ID) locale: string
+    ) {
+    console.log('AppModule', locale);
+    // translate.setDefaultLang('en');
+    translateService.use(locale.replace(/\-.*$/, ''));
+  }
 }

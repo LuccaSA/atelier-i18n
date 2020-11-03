@@ -28,11 +28,10 @@ const routes: Routes = [
 })
 export class FooModule {
   constructor(
-    private translate: TranslateService,
+    private translateService: TranslateService,
     @Inject(LOCALE_ID) locale: string
     ) {
     console.log('FooModule', locale);
-    // translate.setDefaultLang('en');
-    // translate.use('en');
+    translateService.use(locale.replace(/\-.*$/, ''));
   }
 }

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable, InjectionToken, LOCALE_ID, ModuleWithProviders, NgModule, Optional } from '@angular/core';
+import { Inject, Injectable, InjectionToken, ModuleWithProviders, NgModule, Optional } from '@angular/core';
 import { TranslateLoader } from '@ngx-translate/core';
 import { forkJoin, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -33,21 +33,17 @@ export class LuTranslationUrlsModule {
 export class LuTranslationsLoader implements TranslateLoader {
   constructor(
     private http: HttpClient,
-    @Inject(LOCALE_ID) locale: string,
     @Optional() @Inject(LU_PARENT_TRANSLATION_URLS) private parentTranslationUrls?: string[],
     @Optional() @Inject(LU_TRANSLATION_URLS) private translationUrls?: string[],
-  ) {
-    console.log(`LuTranslationsLoader`, locale);
-    // this.getTranslation()
-  }
+  ) { }
 
   public getTranslation(lang: string): Observable<object> {
-    console.log('getTranslation');
+    console.log('getTranslation', lang);
     if (this.parentTranslationUrls) {
-      console.log('parent');
+      console.log('parent', this.parentTranslationUrls);
     }
     if (this.translationUrls) {
-      console.log('child');
+      console.log('child', this.translationUrls);
     }
     const parentAndChildArrays = [
       ...(this.parentTranslationUrls ?? []),
