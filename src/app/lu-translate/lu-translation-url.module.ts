@@ -1,9 +1,11 @@
-import { Inject, InjectionToken, LOCALE_ID, ModuleWithProviders, NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { Inject, LOCALE_ID, ModuleWithProviders, NgModule } from '@angular/core';
 import { PrincipalModule } from '@lucca/principal';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import { LuTranslationsLoader } from './translation-loader';
+import { LU_PARENT_TRANSLATION_URLS, LU_TRANSLATION_URLS } from './translations.token';
 
-export const LU_TRANSLATION_URLS = new InjectionToken<string>('LU_TRANSLATIONS');
-export const LU_PARENT_TRANSLATION_URLS = new InjectionToken<string>('LU_PARENT_TRANSLATIONS');
+
 
 @NgModule({
   imports: [
@@ -41,7 +43,17 @@ export class LuTranslationUrlsModule {
 
 }
 
-@NgModule()
+@NgModule({
+  imports: [
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: { provide: TranslateLoader, useClass: LuTranslationsLoader },
+    }),
+  ],
+  exports: [
+    TranslateModule,
+  ],
+})
 export class LuTranslationUrlsParentModule {
 
   public constructor(
@@ -50,7 +62,18 @@ export class LuTranslationUrlsParentModule {
   }
 }
 
-@NgModule()
+@NgModule({
+  imports: [
+    HttpClientModule,
+    TranslateModule.forChild({
+      loader: {provide: TranslateLoader, useClass: LuTranslationsLoader},
+      isolate: true,
+    }),
+  ],
+  exports: [
+    TranslateModule,
+  ],
+})
 export class LuTranslationUrlsChildModule {
 
   public constructor(

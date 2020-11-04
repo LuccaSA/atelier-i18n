@@ -3,7 +3,7 @@ import { Inject, Injectable, Optional } from '@angular/core';
 import { TranslateLoader } from '@ngx-translate/core';
 import { forkJoin, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { LU_PARENT_TRANSLATION_URLS, LU_TRANSLATION_URLS } from './lu-translation-url.module';
+import { LU_PARENT_TRANSLATION_URLS, LU_TRANSLATION_URLS } from './translations.token';
 
 @Injectable()
 export class LuTranslationsLoader implements TranslateLoader {
