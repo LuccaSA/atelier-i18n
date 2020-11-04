@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
 		<h2>Onglet Foo</h2>
 		<h3>ce titre est specifique a l'onglet Foo {{'FOO_0' | translate }}</h3>
 		<p>ce text apparait aussi dans l'autre onglet parent => {{'COMMON_0' | translate}}</p>
+		<app-shared></app-shared>
 	`,
 	styles: []
 })
