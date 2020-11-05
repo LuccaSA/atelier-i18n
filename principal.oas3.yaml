@@ -33,3 +33,31 @@ components:
       properties:
         id:
           type: integer
+          required: true
+        fullName:
+          type: string
+          required: true
+        firstName:
+          type: string
+          required: true
+        lastName:
+          type: string
+          required: true
+        cultureCode:
+          type: string
+          required: true
+          default: en-US
+        email:
+          type: string
+          required: true
+          format: email
+        personalEmail:
+          type: string
+          required: true
+          format: email
+        establishmentId:
+          type: integer
+          required: true
+        departmentId:
+          type: integer
+          required: true
