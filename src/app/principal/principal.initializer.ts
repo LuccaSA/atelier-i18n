@@ -11,7 +11,7 @@ export function initPrincipal(initializer: PrincipalInitializer): () => Promise<
 export function getPrincipal(initializer: PrincipalInitializer): IPrincipal {
 	return initializer.principal;
 }
-export function getLocale(initializer: PrincipalInitializer ): string {
+export function getLocale(initializer: PrincipalInitializer): string {
 	return initializer.cultureCode;
 }
 
@@ -23,19 +23,21 @@ export class PrincipalInitializer {
 	constructor(
 		private _cache: PrincipalCache,
 		private _http: HttpClient,
-	) {}
+	) { }
 
 	public initPrincipal(): Promise<void> {
-		// check cache
-		// if present - return cached value
+		let principal = this._cache.get();
+		if (principal != null) {
+			this.principal = principal;
+			return;
+		}
 
-		// else
 		const principalUrl = `/api/v3/users/me?fields=id,firstName,lastName,name,mail,culture[id,code,name]`;
 
 		return this._http.get<{ data: IPrincipal }>(principalUrl).pipe(
-			tap(res=> {
-				// update cache
+			tap(res => {
 				this.principal = res.data;
+				this._cache.set(this.principal);
 				this.cultureCode = res.data?.culture?.code;
 			}),
 			catchError(err => {
