@@ -1,5 +1,6 @@
 import { Component, Inject, LOCALE_ID } from '@angular/core';
-import { IPrincipal, PRINCIPAL } from '@lucca/principal';
+// import { IPrincipal, PRINCIPAL } from '@lucca/principal';
+import { IPrincipal, PRINCIPAL } from './principal';
 
 @Component({
 	selector: 'app-root',
