@@ -29,6 +29,7 @@ export class PrincipalInitializer {
 		let principal = this._cache.get();
 		if (principal != null) {
 			this.principal = principal;
+			this.cultureCode = principal.culture?.code;
 			return;
 		}
 
