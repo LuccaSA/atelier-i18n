@@ -1,0 +1,35 @@
+openapi: "3.0.0"
+info:
+  title: "Api du principal"
+  description: "Proposition d'api du principal à integrer dans lucca.directory"
+  version: "0.0.1"
+  contact:
+    name: lucien et ziri
+tags:
+  - name: Principal
+
+servers:
+  - url: 'http://127.0.0.1:4010/'
+    description: prism mock server
+
+paths:
+  /directory/api/principal:
+    get:
+      operationId: getPrincipal
+      tags:
+        - Principal
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Principal"
+
+components:
+  schemas:
+    Principal:
+      type: object
+      properties:
+        id:
+          type: integer
